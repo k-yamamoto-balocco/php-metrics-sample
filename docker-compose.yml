@@ -1,0 +1,17 @@
+version: '3.2'
+
+services:
+  qa:
+    container_name: php-metrics-sample-qa
+    build:
+      context: ./docker
+      dockerfile: qa.DokerFile
+    tty: true
+    volumes:
+      - type: bind
+        source: ./src
+        target: /var/opt/php-metrics-sample/src
+      - type: bind
+        source: ./qa
+        target: /var/opt/php-metrics-sample/qa
+

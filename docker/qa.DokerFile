@@ -1,0 +1,17 @@
+FROM php:7.4-cli
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  git \
+  unzip && mkdir /var/opt/php-metrics-sample
+CMD bash -c "cd /var/opt/php-metrics-sample && composer require --no-interaction \
+  phpmetrics/phpmetrics --dev \
+  dealerdirect/phpcodesniffer-composer-installer \
+  maglnet/composer-require-checker \
+  php-parallel-lint/php-parallel-lint \
+  phpmd/phpmd \
+  rarst/phpcs-cognitive-complexity \
+  squizlabs/php_codesniffer \
+  vimeo/psalm \
+  sebastian/phpcpd \
+  php-stubs/wordpress-stubs \
+  && /bin/bash"

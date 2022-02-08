@@ -1,0 +1,1 @@
+docker container exec -it php-metrics-sample-qa /bin/bash -c 'cd /var/opt/php-metrics-sample && vendor/bin/phpmetrics src --config=./qa/php-metrics-config.json'
